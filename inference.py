@@ -352,17 +352,16 @@ def main():
 			out.write(f) ##save all on the temp file ('temp/result.avi')
 
 	out.release()
-
-	#end calcolate time
-	end.record()
 	
-	torch.cuda.synchronize()
-
-	print('Time: ', start.elapsed_time(end))
 
 	#save the temp file ('temp/result.avi') on the output path (default: 'results/result_voice.mp4')
 	command = 'ffmpeg -y -i {} -i {} -strict -2 -q:v 1 {}'.format(args.audio, 'temp/result.avi', args.outfile)
 	subprocess.call(command, shell=platform.system() != 'Windows')
+	
+	#end calcolate time
+	end.record()
+	torch.cuda.synchronize()
+	print('Time: ', start.elapsed_time(end))
 
 if __name__ == '__main__':
 	main()

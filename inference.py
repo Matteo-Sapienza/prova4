@@ -120,10 +120,10 @@ def datagen(frames, mels):
 				result = detector.detect_faces(image)
 				if result != []:
 					try:
-						a = frames[i][result[0]['box'][1]-50:result[0]['box'][1]+result[0]['box'][3]+50, result[0]['box'][0]-50:result[0]['box'][0]+result[0]['box'][2]+50]
+						a = frames[i][result[0]['box'][1]+10:result[0]['box'][1]+result[0]['box'][3]-10, result[0]['box'][0]+10:result[0]['box'][0]+result[0]['box'][2]-10]
 						c = 0
 						while c < threshold:
-							face_det_results.append((result[0]['box'][1]-50, result[0]['box'][1] + result[0]['box'][3]+50, result[0]['box'][0]-50, result[0]['box'][0] + result[0]['box'][2]+50))
+							face_det_results.append((result[0]['box'][1]+10, result[0]['box'][1] + result[0]['box'][3]-10, result[0]['box'][0]+10, result[0]['box'][0] + result[0]['box'][2]-10))
 							cropped.append(a)
 							c += 1
 					except:
